@@ -15,8 +15,14 @@ import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+/**
+ * The type Gerenciamento votacao test.
+ */
 public class GerenciamentoVotacaoTest {
 
+  /**
+   * Test gerenciamento votacao and fields.
+   */
   @Test
   @DisplayName("4 - Implementar a classe GerenciamentoVotacao com atributos")
   public void testGerenciamentoVotacaoAndFields() {
@@ -38,6 +44,15 @@ public class GerenciamentoVotacaoTest {
     );
   }
 
+  /**
+   * Test gerenciamento votacao register methods.
+   *
+   * @throws NoSuchMethodException     the no such method exception
+   * @throws InvocationTargetException the invocation target exception
+   * @throws InstantiationException    the instantiation exception
+   * @throws IllegalAccessException    the illegal access exception
+   * @throws NoSuchFieldException      the no such field exception
+   */
   @Test
   @DisplayName("5 - Implementar os métodos de cadastro da classe GerenciamentoVotacao")
   public void testGerenciamentoVotacaoRegisterMethods()
@@ -88,15 +103,15 @@ public class GerenciamentoVotacaoTest {
         = GerenciamentoVotacao.class.getDeclaredField("pessoasCandidatas");
     pessoasCandidatasField.setAccessible(true);
 
-    ArrayList<PessoaCandidata> pessoasCandidatas
+    ArrayList<PessoaCandidata> pessoaCandidata
         = (ArrayList<PessoaCandidata>) pessoasCandidatasField.get(gerenciamentoVotacao);
 
-    assertEquals(0, pessoasCandidatas.size());
+    assertEquals(0, pessoaCandidata.size());
     gerenciamentoVotacao.cadastrarPessoaCandidata("Maria", 445566);
-    assertEquals(1, pessoasCandidatas.size());
+    assertEquals(1, pessoaCandidata.size());
 
     Method getNome = Pessoa.class.getDeclaredMethod("getNome");
-    assertEquals("Maria", getNome.invoke(pessoasCandidatas.get(0)));
+    assertEquals("Maria", getNome.invoke(pessoaCandidata.get(0)));
 
     Field pessoasEleitorasField
         = GerenciamentoVotacao.class.getDeclaredField("pessoasEleitoras");
@@ -110,7 +125,6 @@ public class GerenciamentoVotacaoTest {
     assertEquals(1, pessoasEleitoras.size());
 
     assertEquals("João", getNome.invoke(pessoasEleitoras.get(0)));
-
 
     Field cpfsComputadosField
         = GerenciamentoVotacao.class.getDeclaredField("cpfsComputados");
@@ -126,6 +140,15 @@ public class GerenciamentoVotacaoTest {
   }
 
 
+  /**
+   * Test gerenciamento votacao voting methods.
+   *
+   * @throws NoSuchMethodException     the no such method exception
+   * @throws InvocationTargetException the invocation target exception
+   * @throws InstantiationException    the instantiation exception
+   * @throws IllegalAccessException    the illegal access exception
+   * @throws NoSuchFieldException      the no such field exception
+   */
   @Test
   @DisplayName("6 - Implementar os métodos de votação da classe GerenciamentoVotacao")
   public void testGerenciamentoVotacaoVotingMethods()
@@ -170,11 +193,10 @@ public class GerenciamentoVotacaoTest {
     ArrayList<String> cpfsComputados
         = (ArrayList<String>) cpfsComputadosField.get(gerenciamentoVotacao);
 
-        assertEquals(0, cpfsComputados.size());
+    assertEquals(0, cpfsComputados.size());
     gerenciamentoVotacao.votar("111.222.333.444-55", 12345);
     assertEquals(1, cpfsComputados.size());
     assertEquals("111.222.333.444-55", cpfsComputados.get(0));
-
 
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     PrintStream printStream = new PrintStream(baos);
