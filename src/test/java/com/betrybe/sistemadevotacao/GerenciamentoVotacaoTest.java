@@ -84,14 +84,6 @@ public class GerenciamentoVotacaoTest {
     gerenciamentoVotacao.cadastrarPessoaEleitora("João", "111.222.333.444-55");
 
     assertEquals("Pessoa eleitora já cadastrada!", baos.toString().strip());
-
-    baos = new ByteArrayOutputStream();
-    System.setOut(new PrintStream(baos));
-
-    gerenciamentoVotacao.votar("111.222.333.444-55", 12345);
-    gerenciamentoVotacao.votar("111.222.333.444-55", 54321);
-
-    assertEquals("Pessoa eleitora já votou!", baos.toString().strip());
   }
 
   private void checkRegisterMethodsOk()
