@@ -39,7 +39,7 @@ Para acessar e executar este projeto, siga os passos abaixo:
 2. Clone o Projeto
 
 ```bash
-git clone  SistemaDeVotacao
+git clone https://github.com/EversonDias/Voting_System_with_Java.git SistemaDeVotacao
 ```
 
 3. Entre no projeto
